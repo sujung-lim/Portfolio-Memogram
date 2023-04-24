@@ -16,6 +16,67 @@
     <section class="memo-home">
         <header class="header">
             <span class="logo">Memogram</span>
+            <i class="header-more fa-solid fa-bars"></i>
+        </header>
+
+        <article id="profile">
+            <div id="wrap-profile-pic">
+                <img class="profile-main-pic" src="img/profile.JPG" width="50px" />
+            </div>
+            <div id="profile-info">
+                <span id="user-name">su</span>
+                <button class="btn-edit-name"><i class="fa-regular fa-pen-to-square"></i></button>
+            </div>
+        </article>
+
+        <article id="posted-memo">
+            <div class="memo-quantity">
+                14<br />
+                TEXT
+            </div>
+            <div class="memo-quantity">
+                20<br />
+                PHOTO
+            </div>
+            <div class="memo-quantity">
+                7<br />
+                RECORD
+            </div>
+        </article>
+
+        <article id="sub-icons">
+            <div class="sub-icon selected"><i class="fa-solid fa-border-all"></i></div>
+            <div class="sub-icon add selected"><i class="fa-regular fa-square-plus"></i></div>
+            <div class="sub-icon selected"><i class="fa-solid fa-bookmark"></i></div>
+        </article>
+
+        <article class="memo-post">
+            <textarea class="memo-write" name="" id="content"></textarea>
+            <button class="btn-post" onclick="saveNote()">POST</button>
+        </article>
+
+        <article class="memo-album hidden">
+            <div class="wrap-memos">
+
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+
+            </div>
+        </article>
+    </section>
+
+    <section class="memo-home">
+        <header class="header">
+            <span class="logo">Memogram</span>
             <!-- <input type="header-search" value="🔍 검색" /> -->
             <i class="header-more fa-solid fa-bars"></i>
             <!-- <div class="header-icons">
@@ -27,7 +88,7 @@
         </header>
 
         <article id="profile">
-            <div id="profile-pic-wrap">
+            <div id="wrap-profile-pic">
                 <img class="profile-main-pic" src="img/profile.JPG" width="50px" />
             </div>
             <div id="profile-info">
@@ -74,25 +135,32 @@
         </article>
 
         <article>
-            <div class="thumbnail_grid">
-                <img src="img/thumbnails/thumbnail5.JPG" class="thumbnail" />
-                <img src="img/thumbnails/thumbnail8.JPG" class="thumbnail" />
-                <img src="img/thumbnails/thumbnail1.JPG" class="thumbnail" />
-            </div>
-            <div class="thumbnail_grid">
-                <img src="img/thumbnails/thumbnail14.JPG" class="thumbnail" />
-                <img src="img/thumbnails/thumbnail16.JPG" class="thumbnail" />
-                <img src="img/thumbnails/thumbnail20.JPG" class="thumbnail" />
-            </div>
-            <div class="thumbnail_grid">
-                <img src="img/thumbnails/thumbnail17.jpeg" class="thumbnail" />
-                <img src="img/thumbnails/thumbnail18.jpg" class="thumbnail" />
-                <img src="img/thumbnails/thumbnail3.JPG" class="thumbnail" />
+            <div class="wrap-memos">
+
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+                <div><input class="memo-input" type="text" name="" id="title" /></div>
+
             </div>
         </article>
     </section>
 
-    <section class="memo-feed">
+
+
+
+
+
+
+
+    <!-- <section class="memo-feed">
         <header class="header">
             <img src="https://ww.instagram.com/memoic/imgs/web/mobile_nav_type_logo.png/735145cfe0a4.png" />
             <input type="header-search" value="🔍 검색" />
@@ -155,23 +223,22 @@
         </article>
 
         <article>
-            <div class="thumbnail_grid">
-                <img src="img/thumbnails/thumbnail5.JPG" class="thumbnail" />
-                <img src="img/thumbnails/thumbnail8.JPG" class="thumbnail" />
-                <img src="img/thumbnails/thumbnail1.JPG" class="thumbnail" />
+            <img src="img/thumbnails/thumbnail5.JPG" class="thumbnail" />
+            <img src="img/thumbnails/thumbnail8.JPG" class="thumbnail" />
+            <img src="img/thumbnails/thumbnail1.JPG" class="thumbnail" />
             </div>
-            <div class="thumbnail_grid">
-                <img src="img/thumbnails/thumbnail14.JPG" class="thumbnail" />
-                <img src="img/thumbnails/thumbnail16.JPG" class="thumbnail" />
-                <img src="img/thumbnails/thumbnail20.JPG" class="thumbnail" />
+
+            <img src="img/thumbnails/thumbnail14.JPG" class="thumbnail" />
+            <img src="img/thumbnails/thumbnail16.JPG" class="thumbnail" />
+            <img src="img/thumbnails/thumbnail20.JPG" class="thumbnail" />
             </div>
-            <div class="thumbnail_grid">
-                <img src="img/thumbnails/thumbnail17.jpeg" class="thumbnail" />
-                <img src="img/thumbnails/thumbnail18.jpg" class="thumbnail" />
-                <img src="img/thumbnails/thumbnail3.JPG" class="thumbnail" />
+
+            <img src="img/thumbnails/thumbnail17.jpeg" class="thumbnail" />
+            <img src="img/thumbnails/thumbnail18.jpg" class="thumbnail" />
+            <img src="img/thumbnails/thumbnail3.JPG" class="thumbnail" />
             </div>
         </article>
-    </section>
+    </section> -->
 
     <script src="script.js"></script>
 </body>

@@ -10,7 +10,7 @@ body {
     background-color: lightgray;
 }
 
-/** sectioin memo-home start */
+/* section 메모 홈 - 시작 */
 
 section.memo-home {
     background-color: #fff;
@@ -20,7 +20,7 @@ section.memo-home {
 }
 
 
-/* header - start */
+/* header - 시작 */
 .header {
     display: flex;
     justify-content: space-between;
@@ -42,18 +42,18 @@ section.memo-home {
     cursor: pointer;
 }
 
-/* header - end */
+/* header - 끝 */
 
-/* profile - start */
+/* profile - 시작 */
 article#profile {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 30px;
-    gap: 10px;
+    gap: 20px;
 }
 
-#profile-pic-wrap {
+#wrap-profile-pic {
     width: 15vw;
     height: 15vw;
 }
@@ -65,12 +65,12 @@ article#profile {
     height: 100%;
 }
 
-.user-name {
+.profile-info {
     font-size: 1.3rem;
     font-weight: 100;
 }
 
-/* profile - end */
+/* profile - 끝 */
 
 /* memo quantity - start */
 #posted-memo {
@@ -86,7 +86,7 @@ article#profile {
 
 /* memo quantity - end */
 
-/* feed icon start */
+/* 피드 아이콘 - 시작 */
 #sub-icons {
     display: flex;
     justify-content: space-between;
@@ -95,90 +95,71 @@ article#profile {
     font-size: 1.3rem;
 }
 
-.selected:first-child {
+.selected.add {
     color: black;
     border-bottom: solid black 3px;
 }
 
-.thumbnail_grid {
+/* 피드 아이콘 - 끝 */
+
+/* 메모 작성 - 시작 */
+
+.memo-write {
+    width: 100%;
+    padding-bottom: calc(80%);
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.btn-post {
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+/* 메모 작성 - 끝 */
+
+/* 앨범형 메모 - 시작 */
+/* 왼쪽 모아보기 아이콘 누를 때 show */
+.memo-album.hidden {
+    display: none;
+}
+
+.wrap-memos {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 5px;
 }
 
-.thumbnail {
+.memo {
     width: 100%;
     border-radius: 5px;
 }
 
-
-
-
-
-
-
-#top img {
-    margin-left: auto;
-    margin-right: auto;
-
-    height: 100%;
-    object-fit: contain;
+.memo-input {
+    width: 100%;
+    height: 0;
+    padding-bottom: calc(100%);
+    /* 추가적으로 공부가 더 필요함 */
+    object-fit: cover;
+    border-radius: 5px;
 }
 
-#top input {
-    height: 60%;
-    width: 95%;
-
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-
-    text-align: center;
-    background-color: rgb(250, 250, 250);
-
-    border: solid gray 1px;
-    border-radius: 3px;
-
-    font-size: 3vw;
-    font-weight: 100;
-}
-
-#top i {
-    font-size: 4vw;
-    color: gray;
-}
-
-#top div {
-    text-align: center;
-    padding-top: 3vw;
-}
+/* 앨범형 메모 - 끝 */
 
 
 
 
 
-
-
-
-.highlight_pic {
+/* .highlight_pic {
     width: 10vw;
     height: 10vw;
-}
+} */
 
-.emoji {
+/* .emoji {
     width: 10vw;
     height: 10vw;
-}
-
-#highlight_area {
-    display: grid;
-    grid-template-columns: 12vw 12vw 1fr;
-}
-
-.highlight {
-    text-align: center;
-}
+} */
 
 
 /** sectioin memo-home end */
