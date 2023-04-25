@@ -1,4 +1,5 @@
 body,
+main,
 p,
 strong,
 button {
@@ -10,7 +11,7 @@ body {
     background-color: lightgray;
 }
 
-/* section 메모 홈 - 시작 */
+/* 공통 */
 
 section.memo-home,
 .memo-album {
@@ -18,10 +19,10 @@ section.memo-home,
     margin: 50px;
     padding: 20px;
     border-radius: 30px;
+    box-sizing: border-box;
 }
 
-
-/* header - 시작 */
+/** header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -38,15 +39,15 @@ section.memo-home,
     font-size: 1.5em;
 }
 
-.btn-edit-name {
-    border: none;
-    cursor: pointer;
+/** 프로필 */
+.wrap-profile-posted {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0 20px 0;
 }
 
-/* header - 끝 */
-
-/* profile - 시작 */
-article#profile {
+article.profile {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,7 +55,7 @@ article#profile {
     gap: 20px;
 }
 
-#wrap-profile-pic {
+.wrap-profile-pic {
     width: 15vw;
     height: 15vw;
 }
@@ -67,13 +68,35 @@ article#profile {
 }
 
 .profile-info {
-    font-size: 1.3rem;
-    font-weight: 100;
+    display: flex;
+    align-items: flex-start;
+    gap: 20%;
 }
 
-/* profile - 끝 */
+.user-name,
+.btn-edit-name i {
+    font-size: 1.2em;
+}
 
-/* memo quantity - start */
+.btn-edit-name {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+/** 피드 아이콘 */
+.sub-icons {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px 10px 20px;
+    color: gray;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+/* 왼쪽 메모 작성 홈 화면 */
+
+/** 메모, 북마크 수량 */
 #posted-memo {
     display: flex;
     justify-content: space-evenly;
@@ -82,87 +105,111 @@ article#profile {
 
 .memo-quantity {
     text-align: center;
-    width: 60px;
+    min-width: 100px;
 }
 
-/* memo quantity - end */
-
-/* 피드 아이콘 - 시작 */
-#sub-icons {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 20px 10px 20px;
-    color: gray;
-    font-size: 1.3rem;
-}
-
+/** 피드 아이콘 add:selected */
 .selected.add {
     color: black;
     border-bottom: solid black 3px;
 }
 
-/* 피드 아이콘 - 끝 */
-
-/* 메모 작성 - 시작 */
-
+/** 메모 입력 칸 */
 .memo-write {
     width: 100%;
     padding-bottom: calc(80%);
     border-radius: 5px;
-    margin-bottom: 5px;
+    border: 1px solid gray;
 }
 
 .btn-post {
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 5px;
 }
-
-/* 메모 작성 - 끝 */
 
 /* 왼쪽 모아보기 아이콘 누를 때 show */
 .memo-album.hidden {
     display: none;
 }
 
-/* 앨범형 메모 - 시작 */
+/* 오른쪽 앨범형 화면 */
 
+/* 프로필 */
+.profile.album {
+    margin: 50px;
+}
+
+.selected.album {
+    color: black;
+    border-bottom: solid black 3px;
+}
+
+/* 피드 아이콘 album:selected */
+
+/** 메모 피드 */
 .wrap-memos {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 5px;
 }
 
-.memo-feed {
-    width: 100%;
-    border-radius: 5px;
-}
-
-.memo-feed {
+[class*='memo-feed'] {
     width: 100%;
     height: 0;
     padding-bottom: calc(100%);
-    /* 추가적으로 공부가 더 필요함 */
+    /* 왜 calc를 사용했을 때 되는지 
+    height:100%을 주면 안 되는지 
+    추가적으로 공부가 더 필요함 */
     object-fit: cover;
     border-radius: 5px;
 }
 
-/* 앨범형 메모 - 끝 */
+/* 메모가 업로드 될 경우 메모에 보더 주기 */
+.memo-saved {
+    border: 1px solid gray;
+}
 
+/** 반응형 페이지 */
+/* 맥북 13인치 데스크탑 브라우저 사이즈 */
 @media (min-width: 1024px) {
     main.wrap-section {
         display: flex;
+        justify-content: center;
     }
 
-    .memo-home {
+    section.memo-home,
+    section.memo-album {
         width: 50%;
         box-sizing: border-box;
     }
 
-    .memo-feed {
-        width: 50%;
-        box-sizing: border-box;
+    .wrap-profile-pic {
+        width: 10vw;
+        height: 10vw;
     }
 }
 
-/** sectioin memo-home end */
+/* 24인치 모니터 브라우저 사이즈 */
+@media (min-width: 1500px) {
+    main.wrap-section {
+        display: flex;
+        justify-content: center;
+    }
+
+    section.memo-home,
+    section.memo-album {
+        width: 50%;
+        box-sizing: border-box;
+    }
+
+    .wrap-profile-pic {
+        width: 8vw;
+        height: 8vw;
+    }
+
+    .user-name,
+    .btn-edit-name i {
+        font-size: 1.4em;
+    }
+}
