@@ -12,7 +12,8 @@ body {
 
 /* section 메모 홈 - 시작 */
 
-section.memo-home {
+section.memo-home,
+.memo-album {
     background-color: #fff;
     margin: 50px;
     padding: 20px;
@@ -119,11 +120,12 @@ article#profile {
 
 /* 메모 작성 - 끝 */
 
-/* 앨범형 메모 - 시작 */
 /* 왼쪽 모아보기 아이콘 누를 때 show */
 .memo-album.hidden {
     display: none;
 }
+
+/* 앨범형 메모 - 시작 */
 
 .wrap-memos {
     display: grid;
@@ -131,12 +133,12 @@ article#profile {
     gap: 5px;
 }
 
-.memo {
+.memo-feed {
     width: 100%;
     border-radius: 5px;
 }
 
-.memo-input {
+.memo-feed {
     width: 100%;
     height: 0;
     padding-bottom: calc(100%);
@@ -147,19 +149,20 @@ article#profile {
 
 /* 앨범형 메모 - 끝 */
 
+@media (min-width: 1024px) {
+    main.wrap-section {
+        display: flex;
+    }
 
+    .memo-home {
+        width: 50%;
+        box-sizing: border-box;
+    }
 
-
-
-/* .highlight_pic {
-    width: 10vw;
-    height: 10vw;
-} */
-
-/* .emoji {
-    width: 10vw;
-    height: 10vw;
-} */
-
+    .memo-feed {
+        width: 50%;
+        box-sizing: border-box;
+    }
+}
 
 /** sectioin memo-home end */
