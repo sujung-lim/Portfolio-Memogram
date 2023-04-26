@@ -1,6 +1,6 @@
 'use strict'
-
-// 로컬스토리지에서 메모데이터 가져오기
+document.addEventListener('DOMContentLoaded', () => {
+  // 로컬스토리지에서 메모데이터 가져오기
 let memoData = JSON.parse(localStorage.getItem('memoData'));
 memoData = memoData ?? [];
 
@@ -12,7 +12,7 @@ for (let i = 0; i < 9; i++) {
   wrapMemos.appendChild(memoElement);
 }
 
-// 로컬 스토리지에 메모 저장하기 
+// 로컬 스토리지에 메모 데이터 저장하기 
 function saveMemo(content) {
     memoData.push({ content });
     localStorage.setItem('memoData', JSON.stringify(memoData));
@@ -30,14 +30,21 @@ postButton.addEventListener('click', () => {
   displayMemos();
 });
 
-const memoWrite = document.querySelector('.memo-write');
-memoWrite.addEventListener('keypress', (event) => {
+const textarea = document.querySelector('.memo-write');
+textarea.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
     event.preventDefault();
     postButton.click();
   }
 })
 
+// 메모 포스팅 하고 나면 textarea 값 비워주기
+postButton.addEventListener('click', () => {
+  const memoContent = textarea.value.trim();
+  saveMemo(memoContent);
+  displayMemos();
+  textarea.value = ' ';
+});
 
 // 오른쪽 피드에 메모 띄우기
 function displayMemos() {
@@ -45,11 +52,14 @@ function displayMemos() {
     const memoElement = document.querySelector(`.memo-feed-${index}`);
     memoElement.innerHTML = `
       <p>${memo.content || 'empty'}</p>
-      <i class="menu fa-solid fa-ellipsis"></i>
-      <ul class="icon-list">
+      <ul class=icon-list>
+      <li><i class="menu fa-solid fa-ellipsis"></i></li>
+      <li><i class="fa-solid fa-square-xmark"></i></li>
+      </ul>
+      
+      <ul class="more-icons hidden">
         <li><i class="fa-solid fa-pen"></i></li>
         <li><i class="fa-solid fa-bookmark"></i></li>
-        <li><i class="fa-solid fa-square-xmark"></i></li>
       </ul>
     `;
 
@@ -57,31 +67,18 @@ function displayMemos() {
     if (memo.content) {
       memoElement.classList.add('memo-saved');
     }
-  });
 
-  // 더보기 ... 아이콘 누르면 아이콘 리스트 띄우기
-  document.addEventListener('click', (event) => {
-    const menu = event.target.closest('.menu');
-    const iconList = menu.nextElementSibling;
-    //더보기 ...아이콘 누르면 더보기 아이콘은 숨기기
-    if (menu && iconList) {
-      iconList.classList.toggle('show-icons');
-      menu.classList.toggle('hide-menu');
-  
-      if (iconList.classList.contains('show-icons')) {
-        menu.classList.add('hide-menu');
-      } else {
-        menu.classList.remove('hide-menu');
-      }
-    } else if (!event.target.closest('.icon-list') && !event.target.closest('.menu')) {
-      // Clicked outside of the menu and icon-list
-      iconList.classList.remove('show-icons');
-      menu.classList.remove('hide-menu');
-    }
+    // x 아이콘 누르면 메모 피드 삭제하기 & 로컬 스토리지의 메모 데이터 삭제하기
+    const iconX = memoElement.querySelector('.fa-square-xmark');
+
+    iconX.addEventListener('click', (event) => {
+      const memoIndex = parseInt(memoElement.classList[0].slice(-1));
+      memoData.splice(memoIndex, 1);
+      localStorage.setItem('memoData', JSON.stringify(memoData));
+      memoElement.remove();
+    })
   });
 }
 
 displayMemos();
-
-
-
+});

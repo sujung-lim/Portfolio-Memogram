@@ -168,22 +168,24 @@ article.profile {
 }
 
 /* 메모 안에 더보기 아이콘 */
-.menu {
+.icon-list {
     position: absolute;
     bottom: 0;
     right: 5px;
+    display: flex;
+    gap: 5px;
     box-sizing: border-box;
     margin: 0;
+    list-style: none;
     color: gray;
+}
+
+.icon-list li i {
     cursor: pointer;
 }
 
-.hide-menu {
-    display: none;
-}
-
 /* 더보기 아이콘 누르면 수정, 북마크, 삭제 아이콘 나타남 */
-.icon-list {
+.more-icons {
     position: absolute;
     bottom: 0;
     right: 5px;
