@@ -35,6 +35,21 @@ section.memo-home,
     font-family: 'Pacifico', cursive;
 }
 
+.speech-bubble {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.speech-bubble.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
 .header-more {
     font-size: 1.5em;
 }
@@ -122,11 +137,23 @@ article.profile {
     border: 1px solid gray;
 }
 
+.memo-write {
+    outline-color: #72aee6;
+}
+
 .btn-post {
     display: block;
     margin: 10px auto;
     margin-bottom: 0;
     padding: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn-post:hover {
+    color: #72aee6;
+    font-weight: bold;
 }
 
 /* 왼쪽 모아보기 아이콘 누를 때 show */
@@ -160,6 +187,7 @@ article.profile {
     aspect-ratio: 1/1;
     border-radius: 5px;
     position: relative;
+    padding: 5px;
 }
 
 /* 메모가 업로드 될 경우 메모에 보더 주기 */
@@ -197,6 +225,10 @@ article.profile {
     color: gray;
 }
 
+.more-icons {
+    display: none;
+}
+
 .icon-list li i {
     cursor: pointer;
 }
@@ -228,7 +260,7 @@ article.profile {
 }
 
 /* 24인치 모니터 브라우저 사이즈 */
-@media (min-width: 1500px) {
+@media (min-width: 1300px) {
     main.wrap-section {
         display: flex;
         justify-content: center;
@@ -236,7 +268,7 @@ article.profile {
 
     section.memo-home,
     section.memo-album {
-        width: 50%;
+        width: 30%;
     }
 
     .wrap-profile-pic {

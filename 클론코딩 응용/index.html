@@ -17,7 +17,17 @@
         <!-- 왼쪽 메모 작성 홈 화면 -->
         <section class="memo-home">
             <header class="header">
-                <span class="logo">Memogram</span>
+                <div class="logo-container">
+                    <span class="logo" onclick="toggleSpeech()">Memogram</span>
+                    <div class="speech-bubble hidden" id="speechBubble">Welcome to Memogram!</div>
+                </div>
+                <div class="speech-bubble" id="speechBubble">
+                    <p>Memogram is a web application for memo or note-taking. The name is a combination of "memo" and
+                        "gram," which refers to the idea of visual storytelling, similar to how music is a form of
+                        storytelling through sound. Memogram allows users to record and share their stories through
+                        written notes, making it a unique and memorable platform for personal expression.</p>
+                </div>
+                <!-- <span class="logo">Memogram</span> -->
                 <i class="header-more fa-solid fa-bars"></i>
             </header>
             <!-- 프로필 -->
@@ -32,13 +42,14 @@
                     </div>
                 </article>
                 <!-- 메모, 북마크 수량  -->
+                <!-- 추후에 자바스크립트로 자동으로 카운트 할 예정 -->
                 <article id="posted-memo">
-                    <div class="memo-quantity">
-                        20<br />
+                    <div class="memo-quantity" id="memo-count">
+                        0<br />
                         MEMO
                     </div>
-                    <div class="memo-quantity">
-                        7<br />
+                    <div class="memo-quantity" id="bookmark-count">
+                        0<br />
                         BOOKMARK
                     </div>
                 </article>
@@ -51,7 +62,7 @@
             </article>
             <!-- 메모 입력 칸 -->
             <article class="memo-post">
-                <textarea class="memo-write" name="" id="content"></textarea>
+                <textarea class="memo-write" placeholder="Note here" name="" id="content"></textarea>
                 <button class="btn-post" onclick="saveMemo()">POST</button>
             </article>
 

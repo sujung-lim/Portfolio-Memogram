@@ -41,7 +41,6 @@ textarea.addEventListener('keypress', (event) => {
 // 메모 포스팅 하고 나면 textarea 값 비워주기
 postButton.addEventListener('click', () => {
   const memoContent = textarea.value.trim();
-  saveMemo(memoContent);
   displayMemos();
   textarea.value = ' ';
 });
