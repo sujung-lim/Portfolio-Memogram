@@ -117,14 +117,15 @@ article.profile {
 /** 메모 입력 칸 */
 .memo-write {
     width: 100%;
-    padding-bottom: calc(80%);
+    padding-bottom: calc(90%);
     border-radius: 5px;
     border: 1px solid gray;
 }
 
 .btn-post {
     display: block;
-    margin: 20px auto;
+    margin: 10px auto;
+    margin-bottom: 0;
     padding: 5px;
 }
 
@@ -150,25 +151,59 @@ article.profile {
 /** 메모 피드 */
 .wrap-memos {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(0, 1fr);
     gap: 5px;
 }
 
 [class*='memo-feed'] {
-    width: 100%;
-    height: 0;
-    padding-bottom: calc(100%);
-    /* 왜 calc를 사용했을 때 되는지 
-    height:100%을 주면 안 되는지 
-    추가적으로 공부가 더 필요함 */
-    object-fit: cover;
+    aspect-ratio: 1/1;
     border-radius: 5px;
+    position: relative;
 }
 
 /* 메모가 업로드 될 경우 메모에 보더 주기 */
 .memo-saved {
     border: 1px solid gray;
 }
+
+/* 메모 안에 더보기 아이콘 */
+.menu {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+    box-sizing: border-box;
+    margin: 0;
+    color: gray;
+    cursor: pointer;
+}
+
+.hide-menu {
+    display: none;
+}
+
+/* 더보기 아이콘 누르면 수정, 북마크, 삭제 아이콘 나타남 */
+.icon-list {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+    display: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: gray;
+}
+
+.icon-list li i {
+    cursor: pointer;
+}
+
+.show-icons {
+    display: block;
+}
+
+
 
 /** 반응형 페이지 */
 /* 맥북 13인치 데스크탑 브라우저 사이즈 */
@@ -200,7 +235,6 @@ article.profile {
     section.memo-home,
     section.memo-album {
         width: 50%;
-        box-sizing: border-box;
     }
 
     .wrap-profile-pic {

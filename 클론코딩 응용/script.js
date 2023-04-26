@@ -22,19 +22,66 @@ function saveMemo(content) {
     memoElement.classList.add('memo-saved');
   }
 
-// 오른쪽 피드에 메모 띄우기
-function displayMemos() {
-    memoData.forEach((memo, index) => {
-      const memoElement = document.querySelector(`.memo-feed-${index}`);
-      memoElement.textContent = memo.content || 'empty';
-    });
-  }
-  displayMemos();
-
-// POST버튼 클릭하면 피드에 메모 업로드하기 
+// POST버튼 클릭하거나 Enter키 누르면 피드에 메모 업로드하기 
 const postButton = document.querySelector('.btn-post');
 postButton.addEventListener('click', () => {
   const memoContent = document.querySelector('.memo-write').value.trim();
   saveMemo(memoContent);
   displayMemos();
 });
+
+const memoWrite = document.querySelector('.memo-write');
+memoWrite.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    postButton.click();
+  }
+})
+
+
+// 오른쪽 피드에 메모 띄우기
+function displayMemos() {
+  memoData.forEach((memo, index) => {
+    const memoElement = document.querySelector(`.memo-feed-${index}`);
+    memoElement.innerHTML = `
+      <p>${memo.content || 'empty'}</p>
+      <i class="menu fa-solid fa-ellipsis"></i>
+      <ul class="icon-list">
+        <li><i class="fa-solid fa-pen"></i></li>
+        <li><i class="fa-solid fa-bookmark"></i></li>
+        <li><i class="fa-solid fa-square-xmark"></i></li>
+      </ul>
+    `;
+
+    // 브라우저 새로고침해도 메모의 보더 그대로 유지하기
+    if (memo.content) {
+      memoElement.classList.add('memo-saved');
+    }
+  });
+
+  // 더보기 ... 아이콘 누르면 아이콘 리스트 띄우기
+  document.addEventListener('click', (event) => {
+    const menu = event.target.closest('.menu');
+    const iconList = menu.nextElementSibling;
+    //더보기 ...아이콘 누르면 더보기 아이콘은 숨기기
+    if (menu && iconList) {
+      iconList.classList.toggle('show-icons');
+      menu.classList.toggle('hide-menu');
+  
+      if (iconList.classList.contains('show-icons')) {
+        menu.classList.add('hide-menu');
+      } else {
+        menu.classList.remove('hide-menu');
+      }
+    } else if (!event.target.closest('.icon-list') && !event.target.closest('.menu')) {
+      // Clicked outside of the menu and icon-list
+      iconList.classList.remove('show-icons');
+      menu.classList.remove('hide-menu');
+    }
+  });
+}
+
+displayMemos();
+
+
+
