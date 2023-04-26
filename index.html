@@ -1,0 +1,139 @@
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gmemoic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Pacifico&display=swap" rel="stylesheet">
+    <title>Memogram</title>
+</head>
+
+<body>
+    <main class="wrap-section">
+        <!-- 왼쪽 메모 작성 홈 화면 -->
+        <section class="memo-home">
+            <header class="header">
+                <div class="logo-container">
+                    <span class="logo" onclick="toggleSpeech()">Memogram</span>
+                    <div class="speech-bubble hidden" id="speechBubble">Welcome to Memogram!</div>
+                </div>
+                <div class="speech-bubble" id="speechBubble">
+                    <p>Memogram is a web application for memo or note-taking. The name is a combination of "memo" and
+                        "gram," which refers to the idea of visual storytelling, similar to how music is a form of
+                        storytelling through sound. Memogram allows users to record and share their stories through
+                        written notes, making it a unique and memorable platform for personal expression.</p>
+                </div>
+                <!-- <span class="logo">Memogram</span> -->
+                <i class="header-more fa-solid fa-bars"></i>
+            </header>
+            <!-- 프로필 -->
+            <div class="wrap-profile-posted">
+                <article class="profile">
+                    <div class="wrap-profile-pic">
+                        <img class="profile-main-pic" src="img/profile.JPG" width="50px" />
+                    </div>
+                    <div class="profile-info">
+                        <span class="user-name">SU</span>
+                        <button class="btn-edit-name"><i class="fa-regular fa-pen-to-square"></i></button>
+                    </div>
+                </article>
+                <!-- 메모, 북마크 수량  -->
+                <!-- 추후에 자바스크립트로 자동으로 카운트 할 예정 -->
+                <article id="posted-memo">
+                    <div class="memo-quantity" id="memo-count">
+                        0<br />
+                        MEMO
+                    </div>
+                    <div class="memo-quantity" id="bookmark-count">
+                        0<br />
+                        BOOKMARK
+                    </div>
+                </article>
+            </div>
+            <!-- 피드 아이콘, add아이콘이 선택되어 있음  -->
+            <article class="sub-icons">
+                <div class="sub-icon selected"><i class="fa-solid fa-border-all"></i></div>
+                <div class="sub-icon add selected"><i class="fa-regular fa-square-plus"></i></div>
+                <div class="sub-icon selected"><i class="fa-solid fa-bookmark"></i></div>
+            </article>
+            <!-- 메모 입력 칸 -->
+            <article class="memo-post">
+                <textarea class="memo-write" placeholder="Note here" name="" id="content"></textarea>
+                <button class="btn-post" onclick="saveMemo()">POST</button>
+            </article>
+
+            <!-- 피드 아이콘 중 왼쪽 앨범 아이콘 누를 경우 앨범형으로 보이게 해 줌 (보류) -->
+            <!-- <article class="memo-album hidden">
+            <div class="wrap-memos">
+                <div class="memo-feed"></div>
+                <div class="memo-feed"></div>
+                <div class="memo-feed"></div>
+                <div class="memo-feed"></div>
+                <div class="memo-feed"></div>
+                <div class="memo-feed"></div>
+                <div class="memo-feed"></div>
+                <div class="memo-feed"></div>
+                <div class="memo-feed"></div>
+            </div>
+        </article> -->
+        </section>
+
+
+        <!-- 오른쪽 앨범형 화면  -->
+        <section class="memo-album">
+            <header class="header">
+                <span class="logo">Memogram</span>
+                <i class="header-more fa-solid fa-bars"></i>
+            </header>
+            <!-- 프로필 -->
+            <article class="profile album">
+                <div class="wrap-profile-pic">
+                    <img class="profile-main-pic" src="img/profile.JPG" width="50px" />
+                </div>
+                <div class="profile-info">
+                    <span class="user-name">SU</span>
+                    <button class="btn-edit-name"><i class="fa-regular fa-pen-to-square"></i></button>
+                </div>
+            </article>
+            <!-- 중요한 메모 글 하이라이트로 표현 (보류) -->
+            <!-- 아래 코드는 참고용 코드 -->
+            <!-- <article id="highlight_area">
+            <div class="highlight">
+                <div class="highlight_pic">
+                    <img class="circle_pic" src="img/highlight.JPG" height="35px" />
+                </div>
+                <div class="emoji">😎</div>
+            </div>
+            <div class="highlight">
+                <div class="highlight_pic">
+                    <img class="circle_pic" src="img/highlight2.JPG" height="35px" />
+                </div>
+                <div class="emoji">🥰</div>
+            </div>
+            <div></div>
+        </article> -->
+
+            <!-- 피드 아이콘 -->
+            <article class="sub-icons">
+                <div class="sub-icon album selected"><i class="fa-solid fa-border-all"></i></div>
+                <div class="sub-icon selected"><i class="fa-regular fa-square-plus"></i></div>
+                <div class="sub-icon selected"><i class="fa-solid fa-bookmark"></i></div>
+            </article>
+
+            <!-- 메모 피드 -->
+            <!-- 메모가 하나씩 포스팅 될 때마다 자바스크립트로 띄워줌 -->
+            <article>
+                <div class="wrap-memos">
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
